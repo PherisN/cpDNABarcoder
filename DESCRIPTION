@@ -1,0 +1,47 @@
+Package: cpDNABarcoder
+Type: Package
+Title: Extraction and Analysis of Chloroplast DNA Barcode Markers
+Version: 1.0.0
+Authors@R: person(
+    given = "Pheris",
+    family = "Namakwa",
+    role = c("aut", "cre"),
+    email = "pherisn@gmail.com"
+    )
+Description: Provides tools for extracting, validating, quality-controlling,
+    exporting, and summarizing chloroplast DNA barcode markers from GenBank
+    genome records. The package supports standard plant DNA barcodes such as
+    rbcL, matK, and psbA-trnH, together with reporting and batch-processing
+    workflows.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Collate:
+    'constants.R'
+    'utils.R'
+    'generics.R'
+    'pipeline_options.R'
+    'gene_dictionary.R'
+    'marker_dictionary.R'
+    'qc.R'
+    'parser.R'
+    'io.R'
+    'genome.R'
+    'interval.R'
+    'barcode.R'
+    'genes.R'
+    'extract.R'
+    'export.R'
+    'summary.R'
+    'report.R'
+    'pipeline.R'
+    'batch.R'
+Imports:
+    utils,
+    tools
+Suggests:
+    testthat (>= 3.0.0),
+    rprojroot
+Config/testthat/edition: 3
