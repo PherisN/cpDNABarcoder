@@ -419,3 +419,118 @@ testthat::test_that(
     
   }
 )
+
+
+test_that(
+  "batch_extract_barcodes writes all genomes to combined marker FASTA files",
+  {
+    
+    input_dir <- tempfile(
+      "combined_batch_inputs_"
+    )
+    
+    output_dir <- tempfile(
+      "combined_batch_fasta_"
+    )
+    
+    dir.create(
+      input_dir
+    )
+    
+    dir.create(
+      output_dir
+    )
+    
+    on.exit(
+      unlink(
+        c(
+          input_dir,
+          output_dir
+        ),
+        recursive = TRUE,
+        force = TRUE
+      ),
+      add = TRUE
+    )
+    
+    source_file <- test_genbank_file(
+      "NC_000932.gb"
+    )
+    
+    files <- file.path(
+      input_dir,
+      c(
+        "genome_1.gb",
+        "genome_2.gb"
+      )
+    )
+    
+    file.copy(
+      from = source_file,
+      to = files
+    )
+    
+    results <- batch_extract_barcodes(
+      files = files,
+      markers = c(
+        "RBCL",
+        "MATK",
+        "PSBA_TRNH"
+      ),
+      output_dir = output_dir,
+      format = "fasta"
+    )
+    
+    expect_length(
+      results,
+      2
+    )
+    
+    output_files <- file.path(
+      output_dir,
+      c(
+        "RBCL.fasta",
+        "MATK.fasta",
+        "PSBA_TRNH.fasta"
+      )
+    )
+    
+    expect_true(
+      all(
+        file.exists(
+          output_files
+        )
+      )
+    )
+    
+    sequence_counts <- vapply(
+      output_files,
+      function(file){
+        
+        sum(
+          grepl(
+            "^>",
+            readLines(
+              file,
+              warn = FALSE
+            )
+          )
+        )
+        
+      },
+      integer(1)
+    )
+    
+    expect_equal(
+      unname(
+        sequence_counts
+      ),
+      c(
+        2L,
+        2L,
+        2L
+      )
+    )
+    
+  }
+)

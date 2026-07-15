@@ -1,7 +1,7 @@
 Package: cpDNABarcoder
 Type: Package
 Title: Extraction and Analysis of Chloroplast DNA Barcode Markers
-Version: 1.0.0
+Version: 1.0.1
 Authors@R: person(
     given = "Pheris",
     family = "Namakwa",
