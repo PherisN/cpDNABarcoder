@@ -18,4 +18,4 @@ A modular R pipeline for extracting chloroplast DNA barcode loci from complete p
 
 ## Project status
 
-Version 1.0.1 is complete and passes `R CMD check` with 0 errors, 0 warnings, and 0 notes. This patch release fixes combined batch export so multi-genome marker FASTA and CSV outputs retain all successfully processed records.
+Version 1.0.1 is a stable development release that passes `R CMD check` with 0 errors, 0 warnings, and 0 notes. The package currently supports extraction of rbcL, matK, and psbA-trnH from annotated GenBank plastomes, with QC, export, reporting, and batch-processing workflows.
