@@ -18,4 +18,4 @@ A modular R pipeline for extracting chloroplast DNA barcode loci from complete p
 
 ## Project status
 
-Version 1.0.0 is complete and passes `R CMD check` with 0 errors, 0 warnings, and 0 notes.
+Version 1.0.1 is complete and passes `R CMD check` with 0 errors, 0 warnings, and 0 notes. This patch release fixes combined batch export so multi-genome marker FASTA and CSV outputs retain all successfully processed records.
